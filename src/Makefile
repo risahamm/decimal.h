@@ -9,7 +9,7 @@ else
     det_OS = -lcheck -lm -lpthread
 endif
 
-all: clean clang s21_decimal.a test gcov_report
+all: clean s21_decimal.a test gcov_report
 
 s21_decimal.a: s21_decimal.o	
 	ar rcs s21_decimal.a *.o 
