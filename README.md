@@ -1,12 +1,8 @@
 # s21_decimal 
 
-> При старте работы над проектом просим вас постараться хронометрировать время работы над проектом.
-> По завершении работы над проектом просим вас ответить на два вопроса [в этом опросе](https://forms.gle/PFAxFfM4GJuQU1x59)
-
 Implementation of your own s21_decimal.h library.
 
 The russian version of the task can be found in the repository.
-
 
 ## Contents
 
@@ -21,33 +17,6 @@ The russian version of the task can be found in the repository.
 ## Chapter I
 
 ![s21_decimal](misc/images/s21_decimal.png)
-
-Planet Earth, 1990s. 
-
-The world economy is growing exponentially, the stock exchange increases many times year after year, more and more companies go public and their shares start to be quoted. The number of users, the number of transactions, price, commission, interest, calculation of financial technical indicators... It's hard to overestimate the accuracy of all this data, and there are serious problems with the current obsolete data types used in the financial sector.
-
-Due to a calculation error in the usual IEEE 754 (float) millions of dollars are lost every year, which simply absorbed from the system, disappearing forever. 
-
-Together with the FIX (Financial Information eXchange) protocol, which is being developed for data processing in the transfer between the broker and the exchange, one more tool is needed for data transfer and storage. \
-At the follow-up meeting:
-
-*-- So, gentlemen, please note that our group of specialists, who have already proven themselves in many successful projects, has been tasked by the government to develop a completely new type of data, code-named Decimal. Its task is to allow significantly minimise error for several decades, and in some cases remove it completely in the world's financial transactions. It is required to describe all the necessary logical and arithmetic operations, which would allow to make the necessary calculations quickly and conveniently.*
-
-*- Wow, that's quite an order we got, and from such a customer! We have to keep this client - it promises us big contracts in the future if we do well!*
-
-*-- Yes, you're right, that’s why we need to figure out what functions we need to implement... Any suggestions?*
-
-*-- Sum and difference....*
-
-*-- Multiplication and division...*
-
-*-- Agreed, but we need more!*
-
-*- Taking the remainder, comparison and conversion operations!*
-
-*-- Mathematical rounding in all directions!*
-
-*-- Yes, I think that’s enough, let’s get to work! We've got no more than a couple of days, don't let us down!*
 
 ## Introduction
 
@@ -181,5 +150,3 @@ The functions of the decimal.h library described [above](#information) must be i
 - It is forbidden to use the __int128 type
 - Trailing zeros can be as preserved as deleted (except for the `s21_truncate` function)
 - The defined type must support numbers from -79,228,162,514,264,337,593,543,950,335 to +79,228,162,514,264,337,593,543,950,335.
-
-💡[ Tap here](https://forms.yandex.ru/cloud/641813ff73cee70b89478991/) **to leave your feedback on the project**. Pedago Team really tries to make your educational experience better.
