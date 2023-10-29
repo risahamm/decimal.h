@@ -53,7 +53,7 @@ void set_bit(unsigned int *num, int index);  //устанавливает бит
 void set_spec_bit(unsigned int *num, int index, int bit);
 void null_bit(unsigned int *num, int index);  //устанав бит на 0
 
-// deciaml operations
+// decimal operations
 void null_decimal(s21_decimal *decimal);  //зануляет децимал
 void null_big_decimal(big_decimal *value);
 int get_scale(s21_decimal decimal);  //читает экспоненту

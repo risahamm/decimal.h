@@ -56,7 +56,7 @@ int s21_round(s21_decimal value, s21_decimal *result) {
       set_spec_bit(&result->bits[3], 31, sign);
     }
     if (greater_or_equal(remainder, half) == 1) {
-      big_result = summ(big_result, one);
+      summ(big_result, one);
       return_code = big_to_decimal(result, big_result);
       set_spec_bit(&result->bits[3], 31, sign);
     }

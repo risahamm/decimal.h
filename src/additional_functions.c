@@ -20,6 +20,7 @@ void set_spec_bit(unsigned int *num, int index, int bit) {
     set_bit(num, index);
   } else {
     null_bit(num, index);
+    
   }
 }
 
