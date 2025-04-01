@@ -87,7 +87,7 @@ Return value - code error:
 - 0 - OK
 - 1 - convertation error
 
-### Another functions
+### Other functions
 
 | Description | Function                                                         | 
 | ------ |------------------------------------------------------------------|
