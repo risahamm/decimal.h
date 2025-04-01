@@ -109,26 +109,7 @@ int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
   return res;
 }
 
-int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) {
-  int res = 0;
-  s21_decimal zero = {{0, 0, 0, 0}};
-  if (result == NULL) {
-    return (res = 1);
-  }
-  if (s21_is_equal(value_2, zero)) {
-    return (res = 3);
-  }
-  float temp_1 = 0;
-  s21_from_decimal_to_float(value_1, &temp_1);
-  float temp_2 = 0;
-  s21_from_decimal_to_float(value_2, &temp_2);
-  float temp_result = temp_1 / temp_2;
-  res = s21_from_float_to_decimal(temp_result, result);
-  if (res == 1) {
-    null_decimal(result);
-  }
-  return res;
-}
+/*-------------Вспомогательные функции--------------*/
 
 big_decimal summ(big_decimal value_1, big_decimal value_2) {
   big_decimal result = {{0}};

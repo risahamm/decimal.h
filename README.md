@@ -1,31 +1,18 @@
 # s21_decimal 
 
-Implementation of your own s21_decimal.h library.
+Implementation of s21_decimal.h library. Study project.
 
-The russian version of the task can be found in the repository.
+- The library is developed in C language of C11 standard using gcc compiler
+- The library code is located in the src folder on the develop branch 
+- The code of the program is written in accordance with Google style
+- Static library (with the s21_decimal.h header file)
+- The library is developed according to the principles of structured programming
+- Full coverage of library functions code with unit-tests using <check.h> library is provided
+- Makefile with targets all, clean, test, s21_decimal.a, gcov_report is provided
+- The gcov_report generates a gcov report in the form of an html page
+- The defined type supports numbers from -79,228,162,514,264,337,593,543,950,335 to +79,228,162,514,264,337,593,543,950,335.
 
-## Contents
-
-1. [Chapter I](#chapter-i) \
-   1.1. [Introduction](#introduction)
-2. [Chapter II](#chapter-ii) \
-   2.1. [Information](#information)
-3. [Chapter III](#chapter-iii) \
-   3.1. [Part 1](#part-1-implementation-of-the-decimalh-library-functions)
-
-
-## Chapter I
-
-![s21_decimal](misc/images/s21_decimal.png)
-
-## Introduction
-
-In this project you will implement the s21_decimal.h library in the C programming language. This library should add the ability to work with the "decimal" type, which is not in the language standard. Nevertheless, this type is critically important. For financial calculations, for example, where errors of calculations characteristic of types with floating point are unacceptable. As part of the project you will work with the tasks of processing financial information, dive into the issues of internal representation of different types of data, and solidify knowledge of structured programming.
-
-
-## Chapter II
-
-## Information
+### Information
 
 The Decimal value type represents decimal numbers ranging from positive 79,228,162,514,264,337,593,543,950,335 to negative 79,228,162,514,264,337,593,543,950,335. The default value of a Decimal is 0. The Decimal value type is appropriate for financial calculations that require large numbers of significant integral and fractional digits and no round-off errors. The Decimal type does not eliminate the need for rounding. Rather, it minimizes errors due to rounding.
 
@@ -46,19 +33,16 @@ Decimal number can be implemented as a four-element array of 32-bit signed integ
 `bits[0]`, `bits[1]`, and `bits[2]` contain the low, middle, and high 32 bits of the 96-bit integer number accordingly.
 
 `bits[3]` contains the scale factor and sign, and consists of following parts:
-- Bits 0 to 15, the lower word, are unused and must be zero.
-- Bits 16 to 23 must contain an exponent between 0 and 28, which indicates the power of 10 to divide the integer number.
-- Bits 24 to 30 are unused and must be zero.
+- Bits 0 to 15, the lower word, are unused and are zeros.
+- Bits 16 to 23 contain an exponent between 0 and 28, which indicates the power of 10 to divide the integer number.
+- Bits 24 to 30 are unused and are zeros.
 - Bit 31 contains the sign; 0 meaning positive, and 1 meaning negative.
 
-Note that the bit representation differentiates between negative and positive zero. These values can be treated as being equal in all operations.
-
-### Example:
+### Structure:
 
 ```c
-typedef struct 
-{
-    int bits[4];
+typedef struct {
+    unsigned int bits[4];
 } s21_decimal;
 ```
 
@@ -68,17 +52,12 @@ typedef struct
 | ------ | ------ |------------------------------------------------------------------------------------|
 | Addition | + | int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result)         |
 | Subtraction | - | int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
-| Multiplication | * | int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) | 
-| Division | / | int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
+| Multiplication | * | int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) |
 
 The functions return the error code:
 - 0 - OK
 - 1 - the number is too large or equal to infinity
 - 2 - the number is too small or equal to negative infinity
-- 3 - division by 0
-
-*Note on the numbers that do not fit into the mantissa:*
-- *When getting numbers that do not fit into the mantissa during arithmetic operations, use bank rounding (for example, 79,228,162,514,264,337,593,543,950,335 - 0.6 = 79,228,162,514,264,337,593,543,950,334)*
 
 ### Comparison Operators
 
@@ -108,15 +87,6 @@ Return value - code error:
 - 0 - OK
 - 1 - convertation error
 
-*Note on the conversion of a float type number:*
-- *If the numbers are too small (0 < |x| < 1e-28), return an error and value equal to 0*
-- *If the numbers are too large (|x| > 79,228,162,514,264,337,593,543,950,335) or are equal to infinity, return an error*
-- *When processing a number with the float type, convert all the significant decimal digits contained in it. If there are more than 7 such digits, the number is rounded to the closest one that does not have more than 7 significant decimal digits.*
-
-*Note on the conversion from decimal type to int:*
-- *If there is a fractional part in a decimal number, it should be discarded (for example, 0.9 is converted to 0)*
-
-
 ### Another functions
 
 | Description | Function                                                         | 
@@ -129,24 +99,3 @@ Return value - code error:
 Return value - code error:
 - 0 - OK
 - 1 - calculation error
-
-## Chapter III
-
-## Part 1. Implementation of the decimal.h library functions
-
-The functions of the decimal.h library described [above](#information) must be implemented:
-- The library must be developed in C language of C11 standard using gcc compiler
-- The library code must be located in the src folder on the develop branch   
-- Do not use outdated and legacy language constructions and library functions. Pay attention to the legacy and obsolete marks in the official documentation on the language and the libraries used. Use the POSIX.1-2017 standard.
-- When writing code it is necessary to follow the Google style
-- Make it as a static library (with the s21_decimal.h header file)
-- The library must be developed according to the principles of structured programming;
-- Use prefix s21_ before each function
-- Prepare full coverage of library functions code with unit-tests using the Check library
-- Unit tests must cover at least 80% of each function (checked using gcov)   
-- Provide a Makefile for building the library and tests (with targets all, clean, test, s21_decimal.a, gcov_report)  
-- The gcov_report target should generate a gcov report in the form of an html page. Unit tests must be run with gcov flags to do this
-- When implementing decimal, stick to [the binary representation](#binary-representation) with the integer `bits` array as specified in the [example above](#example). Observe the position of the digits of a number in the `bits` array
-- It is forbidden to use the __int128 type
-- Trailing zeros can be as preserved as deleted (except for the `s21_truncate` function)
-- The defined type must support numbers from -79,228,162,514,264,337,593,543,950,335 to +79,228,162,514,264,337,593,543,950,335.

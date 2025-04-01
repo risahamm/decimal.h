@@ -22,7 +22,6 @@ typedef struct {
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
-int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 
 // comparison
 int s21_is_less(s21_decimal value1, s21_decimal value2);
@@ -66,7 +65,6 @@ void set_sign(s21_decimal *decimal);  //делает число отрицате
 void normalise(big_decimal *decimal_1, big_decimal *decimal_2);
 void multiply_by_10(big_decimal *decimal);
 void divide_by_10(big_decimal *decimal);
-void divide_by_10_round(big_decimal *decimal);
 big_decimal summ(big_decimal value_1, big_decimal value_2);
 big_decimal subtract(big_decimal value_1, big_decimal value_2);
 big_decimal multiplication(big_decimal value_1, big_decimal value_2);

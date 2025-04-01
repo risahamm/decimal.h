@@ -16,6 +16,7 @@
 
 // S21_INT_TO_DECIMAl
 //---------------------------------------
+
 START_TEST(int_to_decimal_1) {
   s21_decimal x = {{0}};
   int y = 3;
@@ -90,11 +91,11 @@ START_TEST(int_to_decimal_7) {
   int return_value = s21_is_equal(result, x);
   ck_assert_int_eq(return_value, 1);
   ck_assert_int_eq(return_code, 0);
-
-  // S21_DECIMAL_TO_INT
-  //---------------------------------------
 }
 END_TEST
+
+// S21_DECIMAL_TO_INT
+//---------------------------------------
 
 START_TEST(decimal_to_int_1) {
   s21_decimal x = {{0, 0, 0, 0}};
@@ -236,11 +237,11 @@ START_TEST(decimal_to_int_14) {
   int y = 0;
   int return_code = s21_from_decimal_to_int(x, &y);
   ck_assert_int_eq(return_code, 1);  // error
-
-  // S21_FLOAT_TO_DECIMAL
-  //---------------------------------------
 }
 END_TEST
+
+// S21_FLOAT_TO_DECIMAL
+//---------------------------------------
 
 START_TEST(float_to_decimal_1) {
   s21_decimal dst = {{0}};
@@ -371,11 +372,11 @@ START_TEST(float_to_decimal_12) {
   int return_value = s21_is_equal(result, dst);
   ck_assert_int_eq(return_code, 0);
   ck_assert_int_eq(return_value, 1);
-
-  // S21_DECIMAL_TO_FLOAT
-  //---------------------------------------
 }
 END_TEST
+
+// S21_DECIMAL_TO_FLOAT
+//---------------------------------------
 
 START_TEST(decimal_to_float_1) {
   s21_decimal src = {{5, 0, 0, 2147483648}};
@@ -484,15 +485,16 @@ START_TEST(decimal_to_float_11) {
   int return_code = s21_from_decimal_to_float(src, &dst);
   ck_assert_int_eq(return_code, 0);
   ck_assert_float_eq(dst, result);
-
-  /////////////////////////
-  // COMPARISON
-  /////////////////////////
-
-  // S21_IS_NOT_EQUAL
-  //---------------------------------------
 }
 END_TEST
+
+/////////////////////////
+// COMPARISON
+/////////////////////////
+
+// S21_IS_NOT_EQUAL
+//---------------------------------------
+
 
 START_TEST(not_equal_1) {
   s21_decimal x1 = {{0, 0, 0, 0}};
@@ -537,11 +539,11 @@ START_TEST(not_equal_6) {
   set_scale(2, &x1);
   set_scale(2, &x2);
   ck_assert_int_eq(s21_is_not_equal(x1, x2), 0);
-
-  // S21_IS_LESS_OR_EQUAL
-  //---------------------------------------
 }
 END_TEST
+
+// S21_IS_LESS_OR_EQUAL
+//---------------------------------------
 
 START_TEST(less_or_equal_1) {
   s21_decimal x1 = {{0, 0, 0, 0}};
@@ -595,11 +597,11 @@ START_TEST(less_or_equal_7) {
   set_scale(2, &x2);
   set_sign(&x1);
   ck_assert_int_eq(s21_is_less_or_equal(x1, x2), 1);
-
-  // S21_IS_LESS
-  //---------------------------------------
 }
 END_TEST
+
+// S21_IS_LESS
+//---------------------------------------
 
 START_TEST(less_1) {
   s21_decimal x1 = {{0, 0, 0, 0}};
@@ -653,11 +655,11 @@ START_TEST(less_7) {
   set_scale(2, &x2);
   set_sign(&x2);
   ck_assert_int_eq(s21_is_less(x1, x2), 0);
-
-  // S21_IS_GREATER
-  //---------------------------------------
 }
 END_TEST
+
+// S21_IS_GREATER
+//--------------------------------------
 
 START_TEST(greater_1) {
   s21_decimal x1 = {{0, 0, 0, 0}};
@@ -696,11 +698,11 @@ START_TEST(greater_5) {
   set_scale(3, &x2);
   set_sign(&x1);
   ck_assert_int_eq(s21_is_greater(x1, x2), 0);
-
-  // S21_IS_GREATER_OR_EQUAL
-  //---------------------------------------
 }
 END_TEST
+
+// S21_IS_GREATER_OR_EQUAL
+//---------------------------------------
 
 START_TEST(greater_or_equal_1) {
   s21_decimal x1 = {{0, 0, 0, 0}};
@@ -754,11 +756,11 @@ START_TEST(greater_or_equal_7) {
   set_scale(2, &x2);
   set_sign(&x1);
   ck_assert_int_eq(s21_is_greater_or_equal(x1, x2), 0);
-
-  // S21_IS_EQUAL
-  //---------------------------------------
 }
 END_TEST
+
+// S21_IS_EQUAL
+//---------------------------------------
 
 START_TEST(equal_1) {
   s21_decimal x1 = {{0, 0, 0, 0}};
@@ -802,15 +804,15 @@ START_TEST(equal_6) {
   s21_decimal x2 = {{360, 0, 0, 0}};
   set_scale(1, &x1);
   ck_assert_int_eq(s21_is_equal(x1, x2), 1);
-
-  /////////////////////////
-  // OTHER
-  /////////////////////////
-
-  // S21_TRUNCATE
-  //---------------------------------------
 }
 END_TEST
+
+/////////////////////////
+// OTHER
+/////////////////////////
+
+// S21_TRUNCATE
+//---------------------------------------
 
 START_TEST(truncate_1) {
   // 264107318112051817.4866968866
@@ -949,11 +951,11 @@ START_TEST(truncate_10) {
   int return_value = s21_is_equal(result, my_result);
   ck_assert_int_eq(return_error, 0);
   ck_assert_int_eq(return_value, 1);
-
-  // S21_NEGATE
-  //---------------------------------------
 }
 END_TEST
+
+// S21_NEGATE
+//---------------------------------------
 
 START_TEST(negate_1) {
   s21_decimal value = {{109646720, 1610664704, 143720576, 0}};
@@ -1021,11 +1023,11 @@ START_TEST(negate_6) {
   int return_value = s21_is_equal(result, my_result);
   ck_assert_int_eq(return_error, 0);
   ck_assert_int_eq(return_value, 1);
-
-  // S21_FLOOR
-  //---------------------------------------
 }
 END_TEST
+
+// S21_FLOOR
+//---------------------------------------
 
 START_TEST(floor_1) {
   // 14990680192016484.7304647104
@@ -1231,11 +1233,11 @@ START_TEST(floor_15) {
   int return_value = s21_is_equal(result, my_result);
   ck_assert_int_eq(return_error, 0);
   ck_assert_int_eq(return_value, 1);
-
-  // S21_ROUND
-  //---------------------------------------
 }
 END_TEST
+
+// S21_ROUND
+//---------------------------------------
 
 START_TEST(round_1) {
   // 349738609805692.312931738872
@@ -1399,15 +1401,15 @@ START_TEST(round_12) {
   int return_value = s21_is_equal(result, my_result);
   ck_assert_int_eq(return_error, 0);
   ck_assert_int_eq(return_value, 1);
-
-  /////////////////////////
-  // ARITHMETIC
-  /////////////////////////
-
-  // S21_ADD
-  //---------------------------------------
 }
 END_TEST
+
+/////////////////////////
+// ARITHMETIC
+/////////////////////////
+
+// S21_ADD
+//---------------------------------------
 
 START_TEST(add_1) {
   s21_decimal src1 = {{27, 0, 0, 0}};
@@ -1581,10 +1583,11 @@ START_TEST(add_15) {
   int return_error = s21_add(src1, src2, &my_result);
   ck_assert_int_eq(return_error, 0);
 
-  // S21_SUB
-  //---------------------------------------
 }
 END_TEST
+
+// S21_SUB
+//---------------------------------------
 
 START_TEST(sub_1) {
   s21_decimal src1 = {{27, 0, 0, 0}};
@@ -1769,11 +1772,11 @@ START_TEST(sub_16) {
   int return_value = s21_is_equal(result, my_result);
   ck_assert_int_eq(return_error, 0);
   ck_assert_int_eq(return_value, 1);
-
-  // S21_MUL
-  //---------------------------------------
 }
 END_TEST
+
+// S21_MUL
+//---------------------------------------
 
 START_TEST(mul_1) {
   s21_decimal src1 = {{27, 0, 0, 0}};
@@ -1941,101 +1944,9 @@ START_TEST(mul_14) {
   ck_assert_int_eq(return_error, 0);
   ck_assert_int_eq(return_value, 1);
 
-  // S21_DIV
-  //---------------------------------------
 }
 END_TEST
 
-START_TEST(div_1) {
-  s21_decimal src1 = {{10000, 0, 0, 0}};
-  set_scale(2, &src1);
-  s21_decimal src2 = {{0, 0, 0, 0}};
-  s21_decimal result = {{0, 0, 0, 0}};
-  s21_decimal my_result = {{0}};
-  int return_error = s21_div(src1, src2, &my_result);
-  int return_value = s21_is_equal(result, my_result);
-  ck_assert_int_eq(return_error, 3);
-  ck_assert_int_eq(return_value, 1);
-}
-END_TEST
-
-START_TEST(div_2) {
-  s21_decimal src1 = {{10000, 0, 0, 0}};
-  set_scale(2, &src1);
-  s21_decimal src2 = {{5, 0, 0, 0}};
-  s21_decimal result = {{20, 0, 0, 0}};
-  s21_decimal my_result = {{0}};
-  int return_error = s21_div(src1, src2, &my_result);
-  int return_value = s21_is_equal(result, my_result);
-  ck_assert_int_eq(return_error, 0);
-  ck_assert_int_eq(return_value, 1);
-}
-END_TEST
-
-START_TEST(div_3) {
-  s21_decimal src1 = {{10000, 0, 0, 0}};
-  set_scale(2, &src1);
-  s21_decimal src2 = {{50, 0, 0, 0}};
-  s21_decimal result = {{2, 0, 0, 0}};
-  s21_decimal my_result = {{0}};
-  int return_error = s21_div(src1, src2, &my_result);
-  int return_value = s21_is_equal(result, my_result);
-  ck_assert_int_eq(return_error, 0);
-  ck_assert_int_eq(return_value, 1);
-}
-END_TEST
-
-START_TEST(div_4) {
-  s21_decimal src1 = {{10000, 0, 0, 0}};
-  set_scale(2, &src1);
-  s21_decimal src2 = {{50, 0, 0, NEGATIVE_INT}};
-  s21_decimal result = {{2, 0, 0, NEGATIVE_INT}};
-  s21_decimal my_result = {{0}};
-  int return_error = s21_div(src1, src2, &my_result);
-  int return_value = s21_is_equal(result, my_result);
-  ck_assert_int_eq(return_error, 0);
-  ck_assert_int_eq(return_value, 1);
-}
-END_TEST
-
-START_TEST(div_5) {
-  s21_decimal src1 = {{100000, 0, 0, 0}};
-  set_scale(2, &src1);
-  s21_decimal src2 = {{50, 0, 0, NEGATIVE_INT}};
-  s21_decimal result = {{20, 0, 0, NEGATIVE_INT}};
-  s21_decimal my_result = {{0}};
-  int return_error = s21_div(src1, src2, &my_result);
-  int return_value = s21_is_equal(result, my_result);
-  ck_assert_int_eq(return_error, 0);
-  ck_assert_int_eq(return_value, 1);
-}
-END_TEST
-
-START_TEST(div_6) {
-  s21_decimal src1 = {{1234567, 0, 0, 0}};
-  set_scale(5, &src1);
-  s21_decimal src2 = {{2, 0, 0, 0}};
-  s21_decimal result = {{6172835, 0, 0, 393216}};
-  s21_decimal my_result = {{0}};
-  int return_error = s21_div(src1, src2, &my_result);
-  int return_value = s21_is_equal(result, my_result);
-  ck_assert_int_eq(return_error, 0);
-  ck_assert_int_eq(return_value, 1);
-}
-END_TEST
-
-START_TEST(div_7) {
-  s21_decimal src1 = {{25, 0, 0, NEGATIVE_INT}};
-  set_scale(1, &src1);
-  s21_decimal src2 = {{2, 0, 0, 0}};
-  s21_decimal result = {{125, 0, 0, 2147614720}};
-  s21_decimal my_result = {{0}};
-  int return_error = s21_div(src1, src2, &my_result);
-  int return_value = s21_is_equal(result, my_result);
-  ck_assert_int_eq(return_error, 0);
-  ck_assert_int_eq(return_value, 1);
-}
-END_TEST
 
 int main(void) {
   Suite *s1 = suite_create("\x1b[93;105ms21_decimal\x1b[0;0m");
@@ -2214,13 +2125,6 @@ int main(void) {
   tcase_add_test(tc1_1, mul_12);
   tcase_add_test(tc1_1, mul_13);
   tcase_add_test(tc1_1, mul_14);
-  tcase_add_test(tc1_1, div_1);
-  tcase_add_test(tc1_1, div_2);
-  tcase_add_test(tc1_1, div_3);
-  tcase_add_test(tc1_1, div_4);
-  tcase_add_test(tc1_1, div_5);
-  tcase_add_test(tc1_1, div_6);
-  tcase_add_test(tc1_1, div_7);
 
   srunner_run_all(sr, CK_ENV);
   nf = srunner_ntests_failed(sr);
